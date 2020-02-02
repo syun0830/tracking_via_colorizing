@@ -69,7 +69,7 @@ if __name__=='__main__':
         # with tarfile.open(kinetics_url, 'r:*') as tar:
         #   tar.extractall('data/kinetics_train')
         os.system('curl "%s" > %s' % (kinetics_url, kinetics_tar))
-        os.system('tar zxvf %s -C %s' % (kinetics_tar, kinetics_path))
+        os.system('tar zxvf %s -C %s' % (kinetics_tar, kinetics_dir))
         # os.remove(kinetics_tar)
     kinetics = json.load(open(kinetics_path))
 
