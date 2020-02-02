@@ -7,7 +7,7 @@ from itertools import cycle
 
 data_dir = os.path.join(os.path.dirname(__file__), 'data')
 kinetics_dir = os.path.join(data_dir, 'kinetics_train')
-kinetics_path = os.path.join(kinetics_dir, 'kinetics_train.json')
+kinetics_path = os.path.join(kinetics_dir, 'train.json')
 video_dir = os.path.join(data_dir, 'videos')
 if __name__ != '__main__':
     if not os.path.exists(kinetics_path):
@@ -62,11 +62,15 @@ if __name__=='__main__':
         if not os.path.exists(kinetics_dir):
             os.mkdir(kinetics_dir)
         print('Downloading kinetics dataset.')
-        kinetics_url = 'https://deepmind.com/documents/193/kinetics_600_train%20(1).zip'
-        kinetics_zip = os.path.join(data_dir, 'kinetics_train.zip')
-        os.system('curl "%s" > %s' % (kinetics_url, kinetics_zip))
-        os.system('unzip %s -d %s' % (kinetics_zip, kinetics_dir))
-        os.remove(kinetics_zip)
+        # kinetics_url = 'https://deepmind.com/documents/193/kinetics_600_train%20(1).zip'
+        kinetics_url = 'https://storage.googleapis.com/deepmind-media/Datasets/kinetics600.tar.gz'
+        # kinetics_zip = os.path.join(data_dir, 'kinetics_train.zip')
+        import tarfile
+        with tarfile.open(kinetics_url, 'r:*') as tar:
+            tar.extractall('data/kinetics_train')
+        # os.system('curl "%s" > %s' % (kinetics_url, kinetics_zip))
+        # os.system('unzip %s -d %s' % (kinetics_zip, kinetics_dir))
+        # os.remove(kinetics_zip)
     kinetics = json.load(open(kinetics_path))
 
     for key in kinetics.keys():
