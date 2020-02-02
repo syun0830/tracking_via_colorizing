@@ -64,13 +64,13 @@ if __name__=='__main__':
         print('Downloading kinetics dataset.')
         # kinetics_url = 'https://deepmind.com/documents/193/kinetics_600_train%20(1).zip'
         kinetics_url = 'https://storage.googleapis.com/deepmind-media/Datasets/kinetics600.tar.gz'
-        # kinetics_zip = os.path.join(data_dir, 'kinetics_train.zip')
+        kinetics_tar = os.path.join(data_dir, 'kinetics_train.tar.gz')
         import tarfile
-        with tarfile.open(kinetics_url, 'r:*') as tar:
-            tar.extractall('data/kinetics_train')
-        # os.system('curl "%s" > %s' % (kinetics_url, kinetics_zip))
-        # os.system('unzip %s -d %s' % (kinetics_zip, kinetics_dir))
-        # os.remove(kinetics_zip)
+        # with tarfile.open(kinetics_url, 'r:*') as tar:
+        #   tar.extractall('data/kinetics_train')
+        os.system('curl "%s" > %s' % (kinetics_url, kinetics_tar))
+        os.system('tar %s -d %s' % (kinetics_tar, kinetics_dir))
+        os.remove(kinetics_tar)
     kinetics = json.load(open(kinetics_path))
 
     for key in kinetics.keys():
