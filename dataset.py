@@ -6,7 +6,7 @@ import tensorflow as tf
 from itertools import cycle
 
 data_dir = os.path.join(os.path.dirname(__file__), 'data')
-kinetics_dir = os.path.join(data_dir, 'kinetics_train')
+kinetics_dir = os.path.join(data_dir, 'kinetics600')
 kinetics_path = os.path.join(kinetics_dir, 'train.json')
 video_dir = os.path.join(data_dir, 'videos')
 if __name__ != '__main__':
